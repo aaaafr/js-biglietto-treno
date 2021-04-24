@@ -9,21 +9,21 @@ console.log(eta);
 var prezzo = 0.21 * chilometri;
 console.log(prezzo);
 // va applicato uno sconto del 20% per i minorenni
+var scontoMin = (prezzo * 20)/100;
+
 // va applicato uno sconto del 40% per gli over 65.
-var totale1 = prezzo - ((prezzo * 20)/100);
-var totale2 = prezzo - ((prezzo * 40)/100);
+var scontoOver = (prezzo * 40)/100;
 
-
-
-if (eta < 18) {
-    console.log(totale1);
+var risultato;
+if( eta < 18) {
+    console.log(risultato = prezzo - scontoMin);
 } else if (eta > 65) {
-   console.log(totale2);
-
+    console.log(risultato = prezzo - scontoOver);
 } else {
-    console.log("Paghi prezzo pieno");
+    console.log(risultato = prezzo);
 }
 
-
 // L'output del prezzo finale va messo fuori in forma umana (con massimo due decimali, per indicare centesimi sul prezzo).
-document.getElementById("spesa").innerHTML = "La spesa totale è " +  + " euro"
+// document.getElementById("spesa").innerHTML = "SPESA TOTALE " + (Math.round((risultato + Number.EPSILON)) * 100 / 100);
+
+document.getElementById("spesa").innerHTML = "Il prezzo totale del biglietto è " + risultato.toFixed(2);
